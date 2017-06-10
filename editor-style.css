@@ -1,0 +1,256 @@
+@charset "UTF-8";
+
+/* 基本 */
+.mceContentBody {
+  color: #404040;
+  font-family: "Roboto", Helvetica, "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "メイリオ", "Meiryo UI", sans-serif;
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.5
+}
+/*--------------------------------------------------------------
+## Typography Customize
+--------------------------------------------------------------*/
+h1, h2, h3, h4, h5, h6 {
+  color: #222;
+  font-family: "Roboto", Helvetica, "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "メイリオ", "Meiryo UI", sans-serif;
+  font-weight: 400;
+}
+
+h1, h2 {
+  font-size: 1.4375em;
+  margin-bottom: 20px;
+}
+
+h2 {
+  position: relative;
+  margin-top: 40px;
+  padding-bottom: 5px;
+  border-bottom: solid 2px #529db0;
+  clear: both
+}
+
+h3 {
+  font-size: 1.125em;
+  border-left: 10px solid #529db0;
+  padding: 0 0 0 10px;
+  margin-top: 20px;
+}
+
+h4 {
+  font-size: 1.125em;
+  border-bottom: 1px dashed #529db0;
+  padding: 10px 0 5px 0;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+h5 {
+  font-size: 1.125em;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+h6 {
+  font-size: 1em;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+code {
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+  font-weight: 400;
+  color: #222;
+  font-size: 0.875em;
+}
+
+pre {
+  padding: 10px;
+  background-color: #f2f2f2;
+  margin-bottom: 20px;
+}
+
+p {
+  margin-bottom: 0.5rem;
+}
+
+/* -------------------- 記事 -------------------- */
+/* 補足情報 */
+.tips {
+  position: relative;
+  margin: 2em 0 1em;
+  padding: 25px 20px 20px;
+  border-radius: 10px;
+  background-color: #d8edf2;
+  box-shadow: 5px 5px 5px #aaaaaa;
+  font-size: 14px;
+  clear: both
+}
+
+.tips:before {
+  position: absolute;
+  left: 15px;
+  top: -15px;
+  content: '\f0eb';
+  z-index: 2;
+  width: 32px;
+  height: 32px;
+  padding-top: 3px;
+  border-radius: 16px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  background-color: #529db0;
+  color: #ffffff;
+  font-family: 'FontAwesome';
+  font-size: 26px;
+  line-height: 1;
+  text-align: center
+}
+
+.tips:after     {
+  position: absolute;
+  left: 32px;
+  top: -8px;
+  z-index: 1;
+  content: 'Tips';
+  padding: 3px 10px 3px 20px;
+  border-radius: 5px;
+  background-color: #529db0;
+  color: #ffffff;
+  font-family: Verdana, Helvetica, sans-serif;
+  font-weight: bold;
+  line-height: 1
+}
+
+/* 注意書き */
+.attention {
+  position: relative;
+  margin: 2em 0 1em;
+  padding: 20px;
+  border-radius: 10px;
+  border: dotted 2px #aa1c1c;
+  background-color: #fedddd;
+  box-shadow: 5px 5px 5px #aaaaaa;
+  font-size: 14px;
+  clear: both
+}
+
+.attention:before {
+  position: absolute;
+  left: 15px;
+  top: -15px;
+  content: '\f12a';
+  z-index: 2;
+  width: 32px;
+  height: 32px;
+  padding-top: 3px;
+  border-radius: 16px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  background-color: #aa1c1c;
+  color: #ffffff;
+  font-family: 'FontAwesome';
+  font-size: 26px;
+  line-height: 1;
+  text-align: center
+}
+
+/* ハイライト */
+.highlight {
+  background: linear-gradient(transparent 60%, #dafee2 60%);
+  padding: 0 3px
+}
+
+/* 引用 */
+blockquote {
+  border: none;
+  position: relative;
+  margin: 30px auto;
+  padding: 20px 50px 1px 50px;
+  max-width: 460px;
+  background: #eee;
+  box-shadow: 5px 5px 5px #aaa;
+  color: #444444;
+  font-size: 18px;
+  line-height: 1.8
+}
+
+blockquote:before {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  content: '\f10d';
+  color: #aaaaaa;
+  font-size: 30px;
+  font-family: 'FontAwesome';
+  line-height: 1
+}
+
+blockquote:after {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  content: '\f10e';
+  color: #aaaaaa;
+  font-size: 30px;
+  font-family: 'FontAwesome';
+  line-height: 1
+}
+
+/* -------------------- 画像 -------------------- */
+/*--------------------------------------------------------------
+## Captions
+--------------------------------------------------------------*/
+.wp-caption {
+  margin-bottom: 1.5em;
+  max-width: 100%;
+}
+
+.wp-caption img[class*="wp-image-"] {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.wp-caption .wp-caption-text {
+  margin: 0.8075em 0;
+}
+
+.wp-caption-dd {
+  text-align: center;
+  margin: 0;
+  color: #666666;
+  font-size: 10px;
+}
+
+.wp-caption-dd a {
+  color: #666666
+}
+
+/* Internet Explorer用の設定 */
+a img            {border: none}
+
+/* 画像の配置 */
+/*--------------------------------------------------------------
+# Alignments
+--------------------------------------------------------------*/
+.alignleft {
+  display: inline;
+  float: left;
+  margin-right: 1.5em;
+}
+
+.alignright {
+  display: inline;
+  float: right;
+  margin-left: 1.5em;
+}
+
+.aligncenter {
+  clear: both;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
