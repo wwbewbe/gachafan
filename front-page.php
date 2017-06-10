@@ -73,7 +73,53 @@ get_header(); ?>
         <div class="row">
           <?php
           $args = array(
-            'posts_per_page'=> '4',
+            'post_type' => 'post',
+            'posts_per_page' => '4',
+          );
+          $the_query = new WP_Query($args); ?>
+          <?php if ( $the_query->have_posts() ) : while ( $the_query->have_posts() ) :
+            $the_query->the_post(); ?>
+          <div class="large-3 small-12 columns">
+            <a href="<?php the_permalink(); ?>">
+              <div class="newspost">
+                <div class="row">
+                  <div class="large-12 small-5 columns">
+                    <div class="thumbnail">
+                      <img src="<?php echo get_thumbnail_url( 'latest-top-thumb' ); ?>" alt="" title="" />
+                    </div>
+                  </div>
+
+                  <div class="large-12 small-7 columns">
+                    <div class="news-meta">
+                      <div class="date">
+                        <i class="fa fa-pencil fa-fw" aria-hidden="true"></i>
+                        <?php the_time( 'Y/m/d' ); ?>
+                      </div>
+                      <p>
+                        <?php echo mb_substr( get_the_title(), 0, 40 ); ?>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        <?php endwhile; endif; ?>
+        <?php wp_reset_query(); ?>
+        </div>
+      </div>
+    </div> <!-- /row -->
+  </div> <!-- /front-news -->
+
+  <div class="front-news">
+    <div class="row">
+      <div class="large-12 columns">
+        <h3><?php echo esc_html__( 'Latest Blogs', 'gachafan' ); ?></h3>
+        <div class="row">
+          <?php
+          $args = array(
+            'post_type' => 'gf_blog',
+            'posts_per_page' => '4',
           );
           $the_query = new WP_Query($args); ?>
           <?php if ( $the_query->have_posts() ) : while ( $the_query->have_posts() ) :

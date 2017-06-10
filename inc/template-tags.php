@@ -142,8 +142,9 @@ function gachafan_post_thumbnail() {
 	if ( is_singular() ) :
 	?>
 
-	<div class="post-thumbnail">
-		<?php the_post_thumbnail(); ?>
+	<div class="post-thumbnail wp-caption">
+		<?php the_post_thumbnail();
+    echo '<p class="wp-caption-text">' . get_post( get_post_thumbnail_id() )->post_excerpt . '</p>'; ?>
 	</div><!-- .post-thumbnail -->
 
 	<?php else : ?>
