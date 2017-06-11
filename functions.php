@@ -301,7 +301,7 @@ add_action( 'widgets_init', 'register_recent_posts_widget' );
 
 // サムネイル付きおすすめ（ピックアップ）投稿一覧ウィジェット
 register_nav_menu( 'pickupnav', __( 'Pickup Posts', 'gachafan' ) );
-get_template_part('inc/class-widget-pickup-posts');
+get_template_part( 'inc/class-widget-pickup-posts' );
 function register_pickup_posts_widget() {
   register_widget( 'Widget_Pickup_Posts' );
 }
@@ -309,6 +309,11 @@ add_action( 'widgets_init', 'register_pickup_posts_widget' );
 
 // トップ画面サムネイル付きトピック投稿一覧
 register_nav_menu( 'topicnav', __( 'Topic Posts', 'gachafan' ) );
+
+/**
+ * カスタムフィールド設定
+ */
+ get_template_part( 'inc/class-post-metabox' );
 
 /**
  * プラグインの有効・無効確認
