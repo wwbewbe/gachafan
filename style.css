@@ -1889,6 +1889,7 @@ object {
 .wp-caption {
   margin-bottom: 1.5em;
   max-width: 100%;
+  text-align: center;
 }
 
 .wp-caption img[class*="wp-image-"] {

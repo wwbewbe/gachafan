@@ -15,6 +15,7 @@
   </header><!-- .entry-header -->
 
   <div class="entry-content">
+    <?php gachafan_post_thumbnail() ?>
     <?php
       the_content();
 
