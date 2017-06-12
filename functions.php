@@ -445,3 +445,25 @@ function QueryListFilter($query) {
   return $query;
 }
 add_action('pre_get_posts','QueryListFilter');
+
+/**
+ * 投稿記事のカスタマイズ
+ */
+function customize_the_content( $content ) {
+  global $post;
+
+  if ( !is_admin() && is_main_query() && is_singular() ) {
+    $content .= '<div class="gacha-info"><dl>';
+    $content .= sprintf( '<dt>%1$s</dt>', esc_html__( 'Gachapon Info: ', 'gachafan' ) );
+    $date = get_post_meta( $post->ID, 'release_date', true );
+    $content .= sprintf( '<dd>%1$s%2$s</dd>', esc_html__( 'Release Date: ', 'gachafan' ), date_i18n( __('F, Y', 'gachafan'), strtotime($date) ) );
+    $content .= sprintf( '<dd>%1$s%2$s</dd>', esc_html__( 'Types: ', 'gachafan' ), get_post_meta( $post->ID, 'types', true ) );
+    $content .= sprintf( '<dd>%1$s%2$s</dd>', esc_html__( 'Price: ', 'gachafan' ), get_post_meta( $post->ID, 'price', true ) );
+    $content .= '</dl></div>';
+  }
+  if ( !is_admin() && is_main_query() && is_singular('gf_blog') ) {
+  }
+
+  return $content;
+}
+add_filter( 'the_content', 'customize_the_content' );
