@@ -13,7 +13,37 @@ get_header(); ?>
     <main id="main" class="site-main" role="main">
 
     <?php
-    if ( have_posts() ) : ?>
+    $s = $_GET['s'];
+    $cat = $_GET['cat'];
+    $tag = $_GET['tag'];
+    $release_date = $_GET['release_date'];
+    var_dump($s);
+    var_dump($cat);
+    var_dump($tag);
+    var_dump($release_date);
+    $args=array(
+      'post_type' => array( 'post', 'gf_blog' ),
+      'category__in' => $cat,
+      'tag' => $tag,
+      's' => $s,
+    );
+    if ( $release_date ) {
+      $args += array('meta_query'	=> array(
+              array(
+                'key' => 'release_date',// 発売日
+                'value' => $release_date,
+                'compare' => '=',
+              )
+            )
+          );
+    }
+    echo 'Args:';
+    var_dump($args);
+    ?>
+    <?php $the_query = new WP_Query($args); ?>
+
+    <?php
+    if ( $the_query->have_posts() ) : ?>
 
       <header class="page-header">
         <h1 class="page-title"><?php printf( esc_html__( 'Search Results for: %s', 'gachafan' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
@@ -21,7 +51,7 @@ get_header(); ?>
 
       <?php
       /* Start the Loop */
-      while ( have_posts() ) : the_post();
+      while ( $the_query->have_posts() ) : $the_query->the_post();
 
         /**
          * Run the loop for the search to output the results.

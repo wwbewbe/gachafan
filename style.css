@@ -1158,6 +1158,10 @@ a:active {
   margin: 3px 0;
   width: 100%;
 }
+.search-title {
+  font-size: 1.125rem;
+  font-weight: bold;
+}
 
 @media only screen and (max-width: 599px) {
   .widget-title {
