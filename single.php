@@ -10,8 +10,8 @@
 get_header(); ?>
 
   <div id="primary" class="content-area large-9 columns">
-    <div class="bread">
-      <?php if( has_category() ): ?>
+    <?php if( has_category() ): ?>
+      <div class="bread">
         <?php $postcats=get_the_category(); ?>
         <?php foreach( $postcats as $postcat ): ?>
           <ol>
@@ -25,8 +25,8 @@ get_header(); ?>
             </li>
           </ol>
         <?php endforeach; ?>
-      <?php endif; ?>
-    </div>
+      </div>
+    <?php endif; ?>
     <main id="main" class="site-main" role="main">
 
     <?php
@@ -53,14 +53,37 @@ get_header(); ?>
         $catkwds[] = $cat->term_id;
       }
     } ?>
+    <?php if( has_term( 'keyword' ) ) { // Related posts menu on each post
+      $keywords = get_the_terms( $post->ID, 'keyword' );
+      $kwds = array();
+      foreach($keywords as $keyword) {
+        $kwds[] = $keyword->term_id;
+      }
+    } ?>
     <?php
-    $args = array(
-      'post_type' => 'post',
-      'posts_per_page' => '4',
-      'post__not_in' => array( $post->ID ),
-      'category__in' => $catkwds,
-      'orderby' => 'rand'
-    );
+    if ( is_singular( 'gf_blog' ) ) {
+      $args = array(
+        'post_type' => 'gf_blog',
+        'posts_per_page' => '4',
+        'post__not_in' => array( $post->ID ),
+        'tax_query' => array(
+      		array(
+      			'taxonomy' => 'keyword',
+      			'field'    => 'term_id',
+      			'terms'    => $kwds,
+      		),
+      	),
+        'orderby' => 'rand'
+      );
+    } else {
+      $args = array(
+        'post_type' => 'post',
+        'posts_per_page' => '4',
+        'post__not_in' => array( $post->ID ),
+        'category__in' => $catkwds,
+        'orderby' => 'rand'
+      );
+    }
     $the_query = new WP_Query($args);
     ?>
     <?php if($the_query->have_posts()): ?>
