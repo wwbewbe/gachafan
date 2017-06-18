@@ -7,11 +7,12 @@
 
   <span class="search-title"><?php echo esc_html__( 'Category: ', 'gachafan' ); ?></span>
   <?php $cats = get_categories(); if ($cats) : ?>
-    <?php foreach ( $cats as $cat ): ?>
-      <div class="search-checkbox">
-      <label><input type="checkbox" name="cat[]" value="<?php echo $cat->cat_ID; ?>"><?php echo esc_html( $cat->name ); ?></label>
-      </div>
-    <?php endforeach; ?>
+    <div class="search-checkbox">
+      <?php foreach ( $cats as $cat ): ?>
+        <label style="float:left; margin-right:10px"><input type="checkbox" name="cat[]" value="<?php echo $cat->cat_ID; ?>"><?php echo esc_html( $cat->name ); ?></label>
+      <?php endforeach; ?>
+      <p style="clear:left;"></p>
+    </div>
   <?php endif; ?>
 
   <span class="search-title"><?php echo esc_html__( 'Tag: ', 'gachafan' ); ?></span>
@@ -25,11 +26,19 @@
   <?php endif; ?>
 
   <span class="search-title"><?php echo esc_html__( 'Release Date: ', 'gachafan' ); ?></span>
-  <?php $dates = array('2017/1', '2017/2', '2017/3', '2017/4', '2017/5', '2017/6', '2017/7', '2017/8', '2017/9', '2017/10', '2017/11', '2017/12', '2016', '2015'); if ( $dates ) : ?>
-    <select class="search-release" name='release_date' id='release_date'>
-      <option value="" selected="selected"><?php echo esc_html__('All days', 'gachafan'); ?></option>
-      <?php foreach ( $dates as $date ): ?>
-        <option value="<?php echo esc_html( $date ); ?>"><?php echo esc_html( $date ); ?></option>
+  <?php $years = array('2014', '2015', '2016', '2017', '2018', '2019', '2020'); if ( $years ) : ?>
+    <select class="search-release" name='release_year' id='release_year'>
+      <option value="" selected="selected"><?php echo esc_html__('All years', 'gachafan'); ?></option>
+      <?php foreach ( $years as $year ): ?>
+        <option value="<?php echo esc_html( $year ); ?>"><?php echo esc_html( $year ); ?></option>
+      <?php endforeach; ?>
+    </select>
+  <?php endif; ?>
+  <?php $months = array(1=>'Jan', 2=>'Feb', 3=>'Mar', 4=>'Apr', 5=>'May', 6=>'Jun', 7=>'Jul', 8=>'Aug', 9=>'Sep', 10=>'Oct', 11=>'Nov', 12=>'Dec'); if ( $months ) : ?>
+    <select class="search-release" name='release_month' id='release_month'>
+      <option value="" selected="selected"><?php echo esc_html__('All months', 'gachafan'); ?></option>
+      <?php foreach ( $months as $month => $_name ): ?>
+        <option value="<?php echo esc_html( $month ); ?>"><?php echo esc_html( $_name ); ?></option>
       <?php endforeach; ?>
     </select>
   <?php endif; ?>

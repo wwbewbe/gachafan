@@ -16,29 +16,48 @@ get_header(); ?>
     $s = $_GET['s'];
     $cat = $_GET['cat'];
     $tag = $_GET['tag'];
-    $release_date = $_GET['release_date'];
-    var_dump($s);
-    var_dump($cat);
-    var_dump($tag);
-    var_dump($release_date);
+    $release_year = $_GET['release_year'];
+    $release_month = $_GET['release_month'];
     $args=array(
       'post_type' => array( 'post', 'gf_blog' ),
       'category__in' => $cat,
       'tag' => $tag,
       's' => $s,
     );
-    if ( $release_date ) {
+    if ( $release_year && $release_month ) {
       $args += array('meta_query'	=> array(
-              array(
-                'key' => 'release_date',// 発売日
-                'value' => $release_date,
-                'compare' => '=',
-              )
-            )
-          );
+        'relation' => 'AND',
+          'meta_year' => array(
+            'key' => 'release_year',// 発売年
+            'value' => $release_year,
+            'compare' => '=',
+          ),
+          'meta_month' => array(
+            'key' => 'release_month',// 発売月
+            'value' => $release_month,
+            'compare' => '=',
+          ),
+        ),
+      );
+    } elseif ( $release_year ) {
+      $args += array('meta_query'	=> array(
+          array(
+            'key' => 'release_year',// 発売年
+            'value' => $release_year,
+            'compare' => '=',
+          ),
+        ),
+      );
+    } elseif ( $release_month ) {
+      $args += array('meta_query'	=> array(
+          array(
+            'key' => 'release_month',// 発売月
+            'value' => $release_month,
+            'compare' => '=',
+          ),
+        ),
+      );
     }
-    echo 'Args:';
-    var_dump($args);
     ?>
     <?php $the_query = new WP_Query($args); ?>
 
@@ -46,7 +65,7 @@ get_header(); ?>
     if ( $the_query->have_posts() ) : ?>
 
       <header class="page-header">
-        <h1 class="page-title"><?php printf( esc_html__( 'Search Results for: %s', 'gachafan' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
+        <h1 class="page-title"><?php printf( esc_html__( 'Search Results: %s', 'gachafan' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
       </header><!-- .page-header -->
 
       <?php

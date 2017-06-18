@@ -453,10 +453,12 @@ function customize_the_content( $content ) {
   global $post;
 
   if ( !is_admin() && is_main_query() && is_singular() ) {
-    $content .= '<div class="gacha-info"><dl>';
-    $content .= sprintf( '<dt>%1$s</dt>', esc_html__( 'Gachapon Info: ', 'gachafan' ) );
-    $date = get_post_meta( $post->ID, 'release_date', true );
-    $content .= sprintf( '<dd>%1$s%2$s</dd>', esc_html__( 'Release Date: ', 'gachafan' ), date_i18n( __('F, Y', 'gachafan'), strtotime($date) ) );
+    $content .= '<div class="gacha-data"><dl>';
+    $content .= sprintf( '<dt>%1$s</dt>', esc_html__( 'Gachapon Data: ', 'gachafan' ) );
+    $year = get_post_meta( $post->ID, 'release_year', true );
+    $month = get_post_meta( $post->ID, 'release_month', true );
+    $year_month = $year . '-' . $month;
+    $content .= sprintf( '<dd>%1$s%2$s</dd>', esc_html__( 'Release: ', 'gachafan' ), date_i18n( __('M. Y', 'gachafan'), strtotime($year_month) ) );
     $content .= sprintf( '<dd>%1$s%2$s</dd>', esc_html__( 'Types: ', 'gachafan' ), get_post_meta( $post->ID, 'types', true ) );
     $content .= sprintf( '<dd>%1$s%2$s</dd>', esc_html__( 'Price: ', 'gachafan' ), get_post_meta( $post->ID, 'price', true ) );
     $content .= '</dl></div>';

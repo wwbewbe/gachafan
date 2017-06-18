@@ -33,7 +33,7 @@ class metaboxClass {
     if ( in_array( $post_type, $post_types )) {
       add_meta_box(
         'gachapon_info',
-        __( 'Gachapon Info Meta Box', 'gachafan' ),
+        __( 'Gachapon Data Meta Box', 'gachafan' ),
         array( $this, 'render_meta_box_content' ),
         $post_type,
         'normal',
@@ -83,7 +83,8 @@ class metaboxClass {
 
     /* OK, its safe for us to save the data now. */
     $post_keys = array( // true:単一文字列, false:複数配列
-      'release_date' => true,
+      'release_year' => true,
+      'release_month' => true,
       'price' => true,
       'types' => true,
     );
@@ -103,15 +104,15 @@ class metaboxClass {
       } elseif (isset($_POST[$post_key])) {
         $input_vals = (array)$_POST[$post_key];
         delete_post_meta(
-        $post_id,	// post ID
-        $post_key	// Custom Field Key
+          $post_id,	// post ID
+          $post_key	// Custom Field Key
         );
         foreach ($input_vals as $input_val) {
           add_post_meta(
-          $post_id,	// post ID
-          $post_key,	// Custom Field Key
-          $input_val,	// Value
-          false		// true:同じキーがあれば追加しない, false:同じキーがあっても追加する
+            $post_id,	// post ID
+            $post_key,	// Custom Field Key
+            $input_val,	// Value
+            false		// true:同じキーがあれば追加しない, false:同じキーがあっても追加する
           );
         }
       }
@@ -135,24 +136,55 @@ class metaboxClass {
     // table
     echo '<table style="width:100%;text-align:left;"><tbody>';
 
-    //Textfield for Release Date
-    $value = get_post_meta(
+    // Select Box for Release Date
+    $year = get_post_meta(
       $post->ID, //post ID
-      'release_date', //Custom Field Key
+      'release_year', //Custom Field Key
       true //true:単一文字列, false:複数配列
     );
+    $month = get_post_meta(
+      $post->ID, //post ID
+      'release_month', //Custom Field Key
+      true //true:単一文字列, false:複数配列
+    );
+    $year_list = array(
+      1 => '2014', 2 => '2015', 3 => '2016', 4 => '2017', 5 => '2018', 6 => '2019', 7 => '2020',
+    );
+    $month_list = array(
+      1 => 'Jan', 2 => 'Feb', 3 => 'Mar', 4 => 'Apr', 5 => 'May', 6 => 'Jun', 7 => 'Jul', 8 => 'Aug', 9 => 'Sep', 10 => 'Oct', 11 => 'Nov', 12 => 'Dec',
+    );
     echo '<tr>';
-    echo   '<th style="width:10%;">';
-    echo     '<label for="release_date">';
-    _e( 'Release Date', 'gachafan' );
-    echo     '</label>';
+    echo   '<th>';
+    echo     '<label for="release_year">Release</label>';
     echo   '</th>';
-    echo   '<td style="width:90%;">';
-//    echo     '<textarea id="release_date" name="release_date" style="width:100%">'.$value.'</textarea>';
-    echo     '<input type="text" id="release_date" name="release_date"';
-    echo     ' value="' . esc_attr( $value ) . '" size="25" />';
+    echo   '<td style="display: block; float:left;">';
+    echo     '<select id="release_year" name="release_year">';
+    foreach ($year_list as $_id => $_name) {
+      if ($_name == $year) {
+        echo   '<option value="'.$_name.'" selected="selected">';
+      } else {
+        echo   '</option><option value="'.$_name.'" type="radio">';
+      }
+      echo  $_name;
+      echo  '</option>';
+    }
+    echo     '</select>';
+    echo   '</td>';
+    echo   '<td style="display: block; float:left;">';
+    echo     '<select id="release_month" name="release_month">';
+    foreach ($month_list as $_id => $_name) {
+      if ($_id == $month) {
+        echo   '<option value="'.$_id.'" selected="selected">';
+      } else {
+        echo   '</option><option value="'.$_id.'" type="radio">';
+      }
+      echo  $_name;
+      echo  '</option>';
+    }
+    echo     '</select>';
     echo   '</td>';
     echo '</tr>';
+    echo '<p style="clear:left;"></p>';
 
     //Textfield for Price
     $value = get_post_meta(
