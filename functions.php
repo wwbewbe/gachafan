@@ -452,7 +452,7 @@ add_action('pre_get_posts','QueryListFilter');
 function customize_the_content( $content ) {
   global $post;
 
-  if ( !is_admin() && is_main_query() && is_singular() ) {
+  if ( !is_admin() && is_main_query() && is_single() ) {
     $content .= '<div class="gacha-data"><dl>';
     $content .= sprintf( '<dt>%1$s</dt>', esc_html__( 'Gachapon Data: ', 'gachafan' ) );
     $year = get_post_meta( $post->ID, 'release_year', true );
