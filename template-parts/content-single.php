@@ -38,23 +38,40 @@
       <?php
         /* translators: used between list items, there is a space after the comma */
         $tag_list = get_the_tag_list( '', esc_html__( ' ', 'gachafan' ) );
-        if ( '' != $tag_list ) {
+        $kwd_list = get_the_term_list( $post->ID, 'keyword', '', ' ', '');
+        if ( ( '' != $tag_list ) || ( '' != $kwd_list ) ) {
           $meta_text = '<i class="fa fa-tags fa-fw" aria-hidden="true"></i>'.esc_html__( '%1$s ', 'gachafan' );
         } else {
           $meta_text = '<i class="fa fa-tags fa-fw" aria-hidden="true"></i>';
         }
       ?>
 
-    <span class="tags-links">
-      <?php
-        printf(
-          $meta_text,
-          $tag_list,
-          get_permalink(),
-          the_title_attribute( 'echo=0' )
-        );
-      ?>
-    </span>
+      <?php if ( '' != $tag_list ) : ?>
+        <span class="tags-links">
+          <?php
+            printf(
+              $meta_text,
+              $tag_list,
+              get_permalink(),
+              the_title_attribute( 'echo=0' )
+            );
+          ?>
+        </span>
+      <?php endif; ?>
+
+      <?php if ( '' != $kwd_list ) : ?>
+        <span class="keyword-links">
+          <?php
+            printf(
+              $meta_text,
+              $kwd_list,
+              get_permalink(),
+              the_title_attribute( 'echo=0' )
+            );
+          ?>
+        </span>
+      <?php endif; ?>
+
     </div><!-- .entry-meta -->
   </header><!-- .entry-header -->
 
