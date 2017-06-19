@@ -53,7 +53,7 @@ get_header(); ?>
         $catkwds[] = $cat->term_id;
       }
     } ?>
-    <?php if( has_term( 'keyword' ) ) { // Related posts menu on each post
+    <?php if( has_term( '', 'keyword' ) ) { // Related posts menu on each post
       $keywords = get_the_terms( $post->ID, 'keyword' );
       $kwds = array();
       foreach($keywords as $keyword) {
