@@ -11,12 +11,6 @@
   <header class="entry-header">
     <h1 class="entry-title"><?php the_title(); ?></h1>
 
-    <?php if ( has_excerpt() ) :?>
-      <div class="entry-post-summary">
-        <?php the_excerpt(); ?>
-      </div><!-- .entry-post-summary -->
-    <?php endif; ?>
-
     <ul class="sns-wrap">
     <li>
       <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
