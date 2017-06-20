@@ -109,7 +109,7 @@ add_action( 'widgets_init', 'gachafan_widgets_init' );
 function gachafan_scripts() {
   wp_enqueue_style( 'foundation-style', get_template_directory_uri().'/layouts/foundation.min.css' );
   wp_enqueue_style( 'gachafan-style', get_stylesheet_uri(), array(), date('U') );
-  wp_enqueue_style( 'font-awesone', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' );
+  wp_enqueue_style( 'font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' );
   wp_enqueue_style( 'google-font', 'https://fonts.googleapis.com/css?family=Averia+Serif+Libre:300,400,700|Oleo+Script:400,700|Open+Sans+Condensed:300,700|Open+Sans:300,400,700,800|Roboto+Condensed:300,400,700|Roboto+Slab:300,400,700|Roboto:300,400,700,900' );
   wp_enqueue_style( 'google-mplus1p', 'https://fonts.googleapis.com/earlyaccess/mplus1p.css' );
   wp_enqueue_style( 'google-roundedmplus1c', 'https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css' );

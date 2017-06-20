@@ -59,11 +59,20 @@
       $termid = $tag_id;
       $taxname = 'post_tag';
   } ?>
-  <meta name="description" content="<?php single_term_title(); ?>">
+
+  <?php $childcats = get_categories( array( 'child_of'=>$termid ) );
+  $kwds = array();
+  $kwds[] = single_term_title( '', false );
+  foreach ( $childcats as $childcat ) {
+    $kwds[] = $childcat->name;
+  } ?>
+  <meta name="keywords" content="<?php echo implode( ',', $kwds ); ?>">
+
+  <meta name="description" content="<?php echo esc_html__( 'This list is about posts on ', 'gachafan' ); ?><?php single_term_title(); ?>">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="<?php single_term_title(); ?> | <?php bloginfo( 'name' ); ?>">
+  <meta property="og:title" content="<?php echo esc_html__( 'Posts related to ', 'gachafan' ); ?><?php single_term_title(); ?> | <?php bloginfo( 'name' ); ?>">
   <meta property="og:url" content="<?php echo get_term_link( $termid, $taxname ); ?>">
-  <meta property="og:description" content="<?php single_term_title(); ?>">
+  <meta property="og:description" content="<?php echo esc_html__( 'This list is about posts on ', 'gachafan' ); ?><?php single_term_title(); ?>">
   <meta property="og:image" content="<?php echo get_template_directory_uri(); ?>/img/site-top.png">
 <?php endif; // カテゴリ・タグページ用のメタデータ【ここまで】 ?>
 
