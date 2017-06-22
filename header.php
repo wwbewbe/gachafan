@@ -108,6 +108,15 @@
 <script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
 
 <?php wp_head(); ?>
+
+<script>
+  jQuery(function(){
+    jQuery('img').attr('onmousedown', 'return false');
+    jQuery('img').attr('onselectstart', 'return false');
+    jQuery('img').attr('oncontextmenu', 'return false');
+  });
+</script>
+
 </head>
 
 <body <?php body_class(); ?>>
