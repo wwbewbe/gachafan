@@ -30,6 +30,7 @@
           </div><!-- .site-info -->
       </div>
     </div>
+    <a href="#top" class="gotop-btn"><i class="fa fa-chevron-up"></i></a>
   </footer><!-- #colophon -->
 </div><!-- #page -->
 

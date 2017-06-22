@@ -2052,3 +2052,36 @@ a img            {border: none}
   padding: 0;
   margin: 0;
 }
+
+/*--------------------------------------------------------------
+# トップへ戻るボタン
+--------------------------------------------------------------*/
+.gotop-btn {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  width: 45px;
+  height: 45px;
+  line-height: 1rem;
+  display: block;
+  background-color: rgba(102, 102, 102, 0.7);
+  text-align: center;
+  color: #ffffff;
+  font-size: 21px;
+  text-decoration: none;
+  padding: 10px;
+  cursor: pointer;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.gotop-btn:hover {
+  opacity: 0.85;
+  background-color: #afafaf;
+  color: dimgray;
+  text-decoration: none;*/
+}
