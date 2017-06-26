@@ -19,10 +19,10 @@
       <header class="entry-header">
         <h3 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( esc_html__( 'Permalink to %s', 'gachafan' ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h3>
 
-        <?php if ( 'page' !== get_post_type() ) : ?>
-        <div class="entry-meta">
-          <?php gachafan_posted_on(); ?>
-        </div><!-- .entry-meta -->
+        <?php if ( 'gf_blog' === get_post_type() ) : ?>
+          <div class="entry-meta">
+            <?php gachafan_posted_on(); ?>
+          </div><!-- .entry-meta -->
         <?php endif; ?>
       </header><!-- .entry-header -->
 

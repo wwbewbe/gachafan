@@ -12,6 +12,8 @@ if ( ! function_exists( 'gachafan_posted_on' ) ) :
  * Prints HTML with meta information for the current post-date/time and author.
  */
 function gachafan_posted_on() {
+  if ( 'gf_blog' != get_post_type() ) return;
+
   $time_string = '<i class="fa fa-pencil fa-fw" aria-hidden="true"></i><time class="entry-date published updated" datetime="%1$s">%2$s</time>';
   if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
     $time_string = '<i class="fa fa-pencil fa-fw" aria-hidden="true"></i><time class="entry-date published" datetime="%1$s">%2$s</time> | <i class="fa fa-pencil-square-o fa-fw" aria-hidden="true"></i><time class="updated" datetime="%3$s">%4$s</time>';

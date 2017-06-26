@@ -49,10 +49,12 @@ get_header(); ?>
             </div>
             <div class="large-12 small-7 columns">
               <h5><?php the_title() ?></h5>
-              <div class="date">
-                <i class="fa fa-pencil fa-fw" aria-hidden="true"></i>
-                <?php the_time( 'Y/m/d' ); ?>
-              </div>
+              <?php if ( is_singular( 'gf_blog' ) ) :?>
+                <div class="date">
+                  <i class="fa fa-pencil fa-fw" aria-hidden="true"></i>
+                  <?php the_time( 'Y/m/d' ); ?>
+                </div>
+              <?php endif; ?>
               <?php the_excerpt(); ?>
             </div>
           </div>
@@ -91,10 +93,6 @@ get_header(); ?>
 
                   <div class="large-12 small-7 columns">
                     <div class="news-meta">
-                      <div class="date">
-                        <i class="fa fa-pencil fa-fw" aria-hidden="true"></i>
-                        <?php the_time( 'Y/m/d' ); ?>
-                      </div>
                       <p>
                         <?php echo mb_substr( get_the_title(), 0, 40 ); ?>
                       </p>
