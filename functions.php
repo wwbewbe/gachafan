@@ -462,6 +462,7 @@ function customize_the_content( $content ) {
     $content .= sprintf( '<dd>%1$s%2$s</dd>', esc_html__( 'Release: ', 'gachafan' ), date_i18n( __('M. Y', 'gachafan'), strtotime($year_month) ) );
     $content .= sprintf( '<dd>%1$s%2$s</dd>', esc_html__( 'Types: ', 'gachafan' ), get_post_meta( $post->ID, 'types', true ) );
     $content .= sprintf( '<dd>%1$s%2$s</dd>', esc_html__( 'Price: ', 'gachafan' ), get_post_meta( $post->ID, 'price', true ) );
+    $content .= sprintf( '<dd>%1$s%2$s</dd>', esc_html__( 'Manufacturer&prime;s Name: ', 'gachafan' ), get_post_meta( $post->ID, 'manufacturer', true ) );
     $content .= '</dl></div>';
   }
   if ( !is_admin() && is_main_query() && is_singular('gf_blog') ) {

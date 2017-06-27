@@ -87,6 +87,7 @@ class metaboxClass {
       'release_month' => true,
       'price' => true,
       'types' => true,
+      'manufacturer' => true,
     );
 
     foreach ($post_keys as $post_key => $unique) {
@@ -220,6 +221,25 @@ class metaboxClass {
     echo   '<td style="width:90%;">';
 //    echo     '<textarea id="types" name="types" style="width:100%">'.$value.'</textarea>';
     echo     '<input type="text" id="types" name="types"';
+    echo     ' value="' . esc_attr( $value ) . '" size="25" />';
+    echo   '</td>';
+    echo '</tr>';
+
+    //Textfield for Manufacturer's Name
+    $value = get_post_meta(
+      $post->ID, //post ID
+      'manufacturer', //Custom Field Key
+      true //true:単一文字列, false:複数配列
+    );
+    echo '<tr>';
+    echo   '<th style="width:10%;">';
+    echo     '<label for="types">';
+    _e( 'Manufacturer&prime;s Name', 'gachafan' );
+    echo     '</label>';
+    echo   '</th>';
+    echo   '<td style="width:90%;">';
+//    echo     '<textarea id="types" name="types" style="width:100%">'.$value.'</textarea>';
+    echo     '<input type="text" id="manufacturer" name="manufacturer"';
     echo     ' value="' . esc_attr( $value ) . '" size="25" />';
     echo   '</td>';
     echo '</tr>';
