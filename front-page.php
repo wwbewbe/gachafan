@@ -97,6 +97,12 @@ get_header(); ?>
                       <p>
                         <?php echo mb_substr( get_the_title(), 0, 40 ); ?>
                       </p>
+                      <?php
+                      $year = get_post_meta( $post->ID, 'release_year', true );
+                      $month = get_post_meta( $post->ID, 'release_month', true );
+                      $year_month = $year . '-' . $month;
+                      printf( '<p>%1$s%2$s</p>', esc_html__( 'Release: ', 'gachafan' ), date_i18n( __('M. Y', 'gachafan'), strtotime($year_month) ) );
+                      ?>
                     </div>
                   </div>
                 </div>
