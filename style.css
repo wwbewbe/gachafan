@@ -1339,26 +1339,27 @@ h3.entry-title {
 .entry-tax a,
 .tagcloud a,
 .tags-links a {
-	display: inline-block;
+  font-size: 0.75rem !important;
+  display: inline-block;
   margin-right: 5px;
   margin-bottom: 5px;
   padding: 0 5px;
-	background-color: #fff;
-	border: 1px solid #aaa;
-	border-radius: 3px;
-	white-space: nowrap;
-	color: #333;
-	text-decoration: none;
-	-webkit-transition: .2s;
-	transition: .2s;
+  background-color: #fff;
+  border: 1px solid #aaa;
+  border-radius: 3px;
+  white-space: nowrap;
+  color: #333;
+  text-decoration: none;
+  -webkit-transition: .2s;
+  transition: .2s;
 }
 
 .entry-tax a:hover,
 .tagcloud a:hover,
 .tags-links a:hover {
-	background-color: #dd0000;
-	border: 1px solid #dd0000;
-	color: #fff;
+  background-color: #dd0000;
+  border: 1px solid #dd0000;
+  color: #fff;
 }
 
 .keyword-links a,
