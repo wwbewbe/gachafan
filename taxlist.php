@@ -6,6 +6,8 @@
 		'category__not_in' => array(1), // 未分類の記事は非表示
     'tag'           => $tagname, // タグを指定(slug)
 		'category_name'	=> $catname, // カテゴリーを指定(slug)
+		'orderby' => 'date',
+		'order' => 'desc',
 		'paged' => $paged,
   );
 	if ( $list ) $args += array( 'posts_per_page' => $list ); // リスト数を指定
