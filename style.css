@@ -1742,6 +1742,7 @@ blockquote:after {
 }
 
 .gachalist-btn a {
+  font-size: 1rem;
   padding: 0 5px;
   float: right;
   display: block;

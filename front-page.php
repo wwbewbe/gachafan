@@ -72,7 +72,7 @@ get_header(); ?>
     <div class="row">
       <div class="large-12 columns">
         <h3><?php echo esc_html__( 'Latest Posts', 'gachafan' ); ?>
-        <span class="gachalist-btn"><a href="http://ds216j-nas/robofrie/gachapon-list/"><?php echo esc_html__( 'Show Gachapon List', 'gachafan' ); ?></a></span></h3>
+        <span class="gachalist-btn"><a href="http://ds216j-nas/robofrie/gachapon-list/"><?php echo esc_html__( 'See More Gacha', 'gachafan' ); ?></a></span></h3>
         <div class="row">
           <?php
           $args = array(
