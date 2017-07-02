@@ -35,35 +35,39 @@ get_header(); ?>
 	if( $myposts ): ?>
 
     <div class="row front-feature">
-    <h3><?php echo esc_html__( 'Feature Posts', 'gachafan' ); ?></h3>
-		<?php foreach($myposts as $post):
-		if(( $post->object == 'post' ) || ( $post->object == 'page' )):
-		$post = get_post( $post->object_id );
-		setup_postdata($post); ?>
+      <div class="large-12 columns">
+        <h3><?php echo esc_html__( 'Feature Posts', 'gachafan' ); ?></h3>
+        <div class="row">
+      		<?php foreach($myposts as $post):
+      		if(( $post->object == 'post' ) || ( $post->object == 'page' )):
+      		$post = get_post( $post->object_id );
+      		setup_postdata($post); ?>
 
-      <div class="large-4 small-12 columns">
-      	<a href="<?php the_permalink(); ?>">
-          <div class="row">
-            <div class="large-12 small-5 columns">
-      	      <img class="topic-thumbnail" src="<?php echo get_thumbnail_url( 'feature-top-thumb' ); ?>">
-            </div>
-            <div class="large-12 small-7 columns">
-              <h5><?php the_title() ?></h5>
-              <?php if ( is_singular( 'gf_blog' ) ) :?>
-                <div class="date">
-                  <i class="fa fa-pencil fa-fw" aria-hidden="true"></i>
-                  <?php the_time( 'Y/m/d' ); ?>
+            <div class="large-4 small-12 columns">
+            	<a href="<?php the_permalink(); ?>">
+                <div class="row">
+                  <div class="large-12 small-5 columns">
+            	      <img class="topic-thumbnail" src="<?php echo get_thumbnail_url( 'feature-top-thumb' ); ?>">
+                  </div>
+                  <div class="large-12 small-7 columns">
+                    <h5><?php the_title() ?></h5>
+                    <?php if ( is_singular( 'gf_blog' ) ) :?>
+                      <div class="date">
+                        <i class="fa fa-pencil fa-fw" aria-hidden="true"></i>
+                        <?php the_time( 'Y/m/d' ); ?>
+                      </div>
+                    <?php endif; ?>
+                    <?php the_excerpt(); ?>
+                  </div>
                 </div>
-              <?php endif; ?>
-              <?php the_excerpt(); ?>
+            	</a>
             </div>
-          </div>
-      	</a>
-      </div>
 
-		<?php endif;
-		endforeach; ?>
-  	<?php wp_reset_postdata(); ?>
+      		<?php endif;
+      		endforeach; ?>
+        	<?php wp_reset_postdata(); ?>
+        </div>
+      </div>
     </div>
 
 	<?php endif; ?>
