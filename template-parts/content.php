@@ -24,6 +24,16 @@
             <?php gachafan_posted_on(); ?>
           </div><!-- .entry-meta -->
         <?php endif; ?>
+        <?php if ( 'post' === get_post_type() ) : ?>
+          <div class="release-meta">
+            <?php
+            $year = get_post_meta( $post->ID, 'release_year', true );
+            $month = get_post_meta( $post->ID, 'release_month', true );
+            $year_month = $year . '-' . $month;
+            printf( '<p>%1$s%2$s</p>', esc_html__( 'Release: ', 'gachafan' ), date_i18n( __('M. Y', 'gachafan'), strtotime($year_month) ) );
+            ?>
+          </div><!-- .release-meta -->
+        <?php endif; ?>
       </header><!-- .entry-header -->
 
       <div class="entry-summary">

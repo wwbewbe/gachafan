@@ -263,7 +263,6 @@ select,
 textarea {
   color: #404040;
   font-family: "Roboto", Helvetica, "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "メイリオ", "Meiryo UI", sans-serif;
-  font-size: 16px;
   font-size: 1rem;
   line-height: 1.5;
 }
@@ -1777,6 +1776,10 @@ blockquote:after {
 
 .news-meta {
   padding: 0 5px;
+}
+
+.release-meta {
+  font-size: 0.875rem;
 }
 
 .front-sp .circle {
