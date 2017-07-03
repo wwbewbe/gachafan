@@ -72,98 +72,102 @@ get_header(); ?>
 
 	<?php endif; ?>
 
-  <div class="front-news">
-    <div class="row">
-      <div class="large-12 columns">
-        <h3><?php echo esc_html__( 'Latest Posts', 'gachafan' ); ?>
-        <span class="gachalist-btn"><a href="<?php echo get_site_url( null, '/gachapon-list/' ); ?>"><?php echo esc_html__( 'See More Gacha', 'gachafan' ); ?></a></span></h3>
-        <div class="row">
-          <?php
-          $args = array(
-            'post_type' => 'post',
-            'posts_per_page' => '4',
-          );
-          $the_query = new WP_Query($args); ?>
-          <?php if ( $the_query->have_posts() ) : while ( $the_query->have_posts() ) :
-            $the_query->the_post(); ?>
-          <div class="large-3 small-12 columns">
-            <a href="<?php the_permalink(); ?>">
-              <div class="newspost">
-                <div class="row">
-                  <div class="large-12 small-5 columns">
-                    <div class="thumbnail">
-                      <img src="<?php echo get_thumbnail_url( 'latest-top-thumb' ); ?>" alt="" title="" />
-                    </div>
-                  </div>
-
-                  <div class="large-12 small-7 columns">
-                    <div class="news-meta">
-                      <p>
-                        <?php echo mb_substr( get_the_title(), 0, 40 ); ?>
-                      </p>
-                      <?php
-                      $year = get_post_meta( $post->ID, 'release_year', true );
-                      $month = get_post_meta( $post->ID, 'release_month', true );
-                      $year_month = $year . '-' . $month;
-                      printf( '<p>%1$s%2$s</p>', esc_html__( 'Release: ', 'gachafan' ), date_i18n( __('M. Y', 'gachafan'), strtotime($year_month) ) );
-                      ?>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-        <?php endwhile; endif; ?>
-        <?php wp_reset_query(); ?>
-        </div>
-      </div>
-    </div> <!-- /row -->
-  </div> <!-- /front-news -->
-
-  <div class="front-news">
-    <div class="row">
-      <div class="large-12 columns">
-        <h3><?php echo esc_html__( 'Latest Blogs', 'gachafan' ); ?></h3>
-        <div class="row">
-          <?php
-          $args = array(
-            'post_type' => 'gf_blog',
-            'posts_per_page' => '4',
-          );
-          $the_query = new WP_Query($args); ?>
-          <?php if ( $the_query->have_posts() ) : while ( $the_query->have_posts() ) :
-            $the_query->the_post(); ?>
-          <div class="large-3 small-12 columns">
-            <a href="<?php the_permalink(); ?>">
-              <div class="newspost">
-                <div class="row">
-                  <div class="large-12 small-5 columns">
-                    <div class="thumbnail">
-                      <img src="<?php echo get_thumbnail_url( 'latest-top-thumb' ); ?>" alt="" title="" />
-                    </div>
-                  </div>
-
-                  <div class="large-12 small-7 columns">
-                    <div class="news-meta">
-                      <div class="date">
-                        <i class="fa fa-pencil fa-fw" aria-hidden="true"></i>
-                        <?php the_time( 'Y/m/d' ); ?>
+  <?php
+  $args = array(
+    'post_type' => 'post',
+    'posts_per_page' => '4',
+  );
+  $the_query = new WP_Query($args);
+  if ( $the_query->have_posts() ) : ?>
+    <div class="front-news">
+      <div class="row">
+        <div class="large-12 columns">
+          <h3><?php echo esc_html__( 'Latest Posts', 'gachafan' ); ?>
+          <span class="gachalist-btn"><a href="<?php echo get_site_url( null, '/gachapon-list/' ); ?>"><?php echo esc_html__( 'See More Gacha', 'gachafan' ); ?></a></span></h3>
+          <div class="row">
+            <?php while ( $the_query->have_posts() ) :
+              $the_query->the_post(); ?>
+              <div class="large-3 small-12 columns">
+                <a href="<?php the_permalink(); ?>">
+                  <div class="newspost">
+                    <div class="row">
+                      <div class="large-12 small-5 columns">
+                        <div class="thumbnail">
+                          <img src="<?php echo get_thumbnail_url( 'latest-top-thumb' ); ?>" alt="" title="" />
+                        </div>
                       </div>
-                      <p>
-                        <?php echo mb_substr( get_the_title(), 0, 40 ); ?>
-                      </p>
+
+                      <div class="large-12 small-7 columns">
+                        <div class="news-meta">
+                          <p>
+                            <?php echo mb_substr( get_the_title(), 0, 40 ); ?>
+                          </p>
+                          <?php
+                          $year = get_post_meta( $post->ID, 'release_year', true );
+                          $month = get_post_meta( $post->ID, 'release_month', true );
+                          $year_month = $year . '-' . $month;
+                          printf( '<p>%1$s%2$s</p>', esc_html__( 'Release: ', 'gachafan' ), date_i18n( __('M. Y', 'gachafan'), strtotime($year_month) ) );
+                          ?>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </a>
               </div>
-            </a>
+            <?php endwhile; ?>
+            <?php wp_reset_query(); ?>
           </div>
-        <?php endwhile; endif; ?>
-        <?php wp_reset_query(); ?>
         </div>
-      </div>
-    </div> <!-- /row -->
-  </div> <!-- /front-news -->
+      </div> <!-- /row -->
+    </div> <!-- /front-news -->
+  <?php endif; ?>
+
+  <?php
+  $args = array(
+    'post_type' => 'gf_blog',
+    'posts_per_page' => '4',
+  );
+  $the_query = new WP_Query($args);
+  if ( $the_query->have_posts() ) : ?>
+    <div class="front-news">
+      <div class="row">
+        <div class="large-12 columns">
+          <h3><?php echo esc_html__( 'Latest Blogs', 'gachafan' ); ?></h3>
+          <div class="row">
+            <?php while ( $the_query->have_posts() ) :
+              $the_query->the_post(); ?>
+              <div class="large-3 small-12 columns">
+                <a href="<?php the_permalink(); ?>">
+                  <div class="newspost">
+                    <div class="row">
+                      <div class="large-12 small-5 columns">
+                        <div class="thumbnail">
+                          <img src="<?php echo get_thumbnail_url( 'latest-top-thumb' ); ?>" alt="" title="" />
+                        </div>
+                      </div>
+
+                      <div class="large-12 small-7 columns">
+                        <div class="news-meta">
+                          <div class="date">
+                            <i class="fa fa-pencil fa-fw" aria-hidden="true"></i>
+                            <?php the_time( 'Y/m/d' ); ?>
+                          </div>
+                          <p>
+                            <?php echo mb_substr( get_the_title(), 0, 40 ); ?>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            <?php endwhile; ?>
+            <?php wp_reset_query(); ?>
+          </div>
+        </div>
+      </div> <!-- /row -->
+    </div> <!-- /front-news -->
+  <?php endif; ?>
 
   <div class="row front-sp front-feature">
     <?php if ( get_page_by_path( 'howtobuy' ) ) : ?>
