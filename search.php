@@ -18,11 +18,13 @@ get_header(); ?>
     $tag = $_GET['tag'];
     $release_year = $_GET['release_year'];
     $release_month = $_GET['release_month'];
+    $paged = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
     $args=array(
       'post_type' => array( 'post', 'gf_blog' ),
       'category__in' => $cat,
       'tag' => $tag,
       's' => $s,
+      'paged' => $paged,
     );
     if ( $release_year && $release_month ) {
       $args += array('meta_query'	=> array(
@@ -81,7 +83,17 @@ get_header(); ?>
 
       endwhile;
 
-      the_posts_navigation();
+      ?>
+      <div class="pagination pagination-index">
+      <?php echo paginate_links( array( 'type' => 'list',
+                  'prev_text' => '&laquo;',
+                  'next_text' => '&raquo;',
+                  'total' => $the_query->max_num_pages,
+                   ) );
+      //            the_posts_navigation();?>
+      </div>
+      <?php
+//      the_posts_navigation();
 
     else :
 
