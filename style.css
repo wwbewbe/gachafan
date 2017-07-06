@@ -2028,6 +2028,7 @@ a img            {border: none}
 
 /*テキストパーツにフォーカスすると色を変更*/
 .wpcf7 input[type=text]:focus,
+.wpcf7 input[type=email]:focus,
 .wpcf7 textarea:focus {
   border-color: #83B6C2;
   outline: none;
