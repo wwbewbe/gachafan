@@ -3,7 +3,7 @@
 /* 基本 */
 .mceContentBody {
   color: #404040;
-  font-family: "Roboto", Helvetica, "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "メイリオ", "Meiryo UI", sans-serif;
+  font-family: Roboto, -apple-system, BlinkMacSystemFont, "メイリオ", Meiryo, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", sans-serif;
   font-size: 16px;
   font-size: 1rem;
   line-height: 1.5
@@ -13,7 +13,7 @@
 --------------------------------------------------------------*/
 h1, h2, h3, h4, h5, h6 {
   color: #222;
-  font-family: "Roboto", Helvetica, "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "メイリオ", "Meiryo UI", sans-serif;
+  font-family: Roboto, -apple-system, BlinkMacSystemFont, "メイリオ", Meiryo, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", sans-serif;
   font-weight: 400;
 }
 
@@ -118,7 +118,7 @@ p {
   border-radius: 5px;
   background-color: darkgray;
   color: #ffffff;
-  font-family: Verdana, Helvetica, sans-serif;
+  font-family: Roboto, -apple-system, BlinkMacSystemFont, Meiryo, sans-serif;
   font-weight: bold;
   line-height: 1
 }
