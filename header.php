@@ -13,6 +13,12 @@
 <html <?php language_attributes(); ?>>
 <head prefix="og: http://ogp.me/ns#">
 <meta charset="<?php bloginfo( 'charset' ); ?>">
+
+<title>
+<?php wp_title( '-', true, 'right'); ?>
+<?php bloginfo( 'name' ); ?>
+</title>
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <?php if( is_home() || is_front_page() ): // トップページ用のメタデータ ?>
