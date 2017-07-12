@@ -39,7 +39,7 @@
 <?php endif; // トップページ用のメタデータ【ここまで】 ?>
 
 <?php if( ( is_single() || is_page() ) && ( !is_front_page() ) ): //記事の個別ページ用のメタデータ ?>
-  <meta name="description" content="<?php echo wp_trim_words( $post->post_excerpt, 200, '…' ); ?>">
+  <meta name="description" content="<?php echo wp_trim_words( $post->post_content, 200, '…' ); ?>">
 
   <?php if ( has_tag() ): ?>
     <?php $tags = get_the_tags();
@@ -53,7 +53,7 @@
   <meta property="og:type" content="article">
   <meta property="og:title" content="<?php the_title(); ?>">
   <meta property="og:url" content="<?php the_permalink(); ?>">
-  <meta property="og:description" content="<?php echo esc_attr( wp_trim_words( $post->post_excerpt, 200, '…' ) ); ?>">
+  <meta property="og:description" content="<?php echo esc_attr( wp_trim_words( $post->post_content, 200, '…' ) ); ?>">
   <meta property="og:image" content="<?php echo get_thumbnail_url( 'large' ); ?>">
 <?php endif; //記事の個別ページ用のメタデータ【ここまで】?>
 
