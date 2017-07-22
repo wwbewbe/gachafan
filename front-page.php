@@ -185,7 +185,7 @@ get_header(); ?>
         <div class="circle">
           <img src="<?php echo get_template_directory_uri(); ?>/img/about.png" alt="" width="100" hight="100" />
         </div>
-        <p style="font-size:12px;"><?php echo esc_html__( 'GachaFan is exciting gachapon information site to show any kind of gachapon. You can find your favorite gachapon in this site. Many gachapon made based on Japanese culture like Amine, Traditional goods, Daily necessities, etc. This site provide various information in English. You can easily get anything gachapon information.', 'gachafan' ); ?></p>
+        <p style="font-size:12px;"><?php echo esc_html__( 'GachaFan is exciting gachapon information site to show any kind of gachapon. You can find your favorite gachapon in this site. Many gachapon made based on Japanese culture like Anime, Traditional goods, Daily necessities, etc. This site provide various information in English. You can easily get anything gachapon information.', 'gachafan' ); ?></p>
       </div>
     </div>
     <?php if ( get_page_by_path( 'contact' ) ) : ?>
