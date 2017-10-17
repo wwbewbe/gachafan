@@ -47,6 +47,10 @@
     foreach ( $tags as $tag ) {
       $kwds[] = $tag->name;
     } ?>
+    <?php $allcats = get_the_category();
+    foreach ( $allcats as $allcat ) {
+      $kwds[] = $allcat->name;
+    } ?>
     <meta name="keywords" content="<?php echo implode( ',', $kwds ); ?>">
   <?php endif; ?>
 
